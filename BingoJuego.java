@@ -29,7 +29,7 @@ public class BingoJuego {
     }
 
     public void iniciarJuego() {
-        System.out.println("\n--- ¡Bienvenido al Bingo de Números Pares! ---");
+        System.out.println("\n--- BINGO ---");
         mostrarSaldo();
 
         while (true) {
@@ -40,7 +40,7 @@ public class BingoJuego {
             try {
                 opcion = Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                mostrarMensajeError("Entrada no válida. Por favor, ingrese un número (1, 2 o 3).");
+                mostrarMensajeError("Ingrese un número 1, 2 o 3.");
                 continue;
             }
 
@@ -52,11 +52,11 @@ public class BingoJuego {
                     mostrarSaldo();
                     break;
                 case 3:
-                    System.out.println("¡Gracias por jugar! Hasta pronto.");
+                    System.out.println("¡Gracias por jugar!");
                     scanner.close();
                     return;
                 default:
-                    mostrarMensajeError("Opción inválida. Por favor, elija 1, 2 o 3.");
+                    mostrarMensajeError("Opción inválida.");
             }
         }
     }
@@ -71,7 +71,7 @@ public class BingoJuego {
 
     private void jugarRonda(){
         if (saldoUsuario < Costo) {
-            mostrarMensajeError("Saldo insuficiente para comprar números. Por favor, vea su saldo o salga.");
+            mostrarMensajeError("Saldo insuficiente para comprar números.");
             return;
         }
 
@@ -124,7 +124,7 @@ public class BingoJuego {
         }
 
         if (numerosPares.size() < 2) {
-            System.out.println("Error interno: No hay suficientes números pares para calcular ganancia.");
+            System.out.println("No hay suficientes números pares");
             return;
         }
 
@@ -143,7 +143,7 @@ public class BingoJuego {
         } else if (numPar1 < 500 && numPar2 < 500) {
             gananciaBruta = 0.25 * sumaPares;
         } else {
-             System.out.println("Condición de ganancia no estándar o adicional detectada.");
+             System.out.println("Condición de ganancia adicional encontrada.");
         }
 
         double gananciaNeta = gananciaBruta - inversionRondaActual;
@@ -161,6 +161,6 @@ public class BingoJuego {
     }
 
     private void mostrarMensajeError(String mensaje) {
-        System.err.println("ERROR: " + mensaje);
+        System.err.println("Hay un error: " + mensaje);
     }
 }
